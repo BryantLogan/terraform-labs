@@ -13,7 +13,7 @@ variable "image" {
   }
 }
 variable "ext_port" {
-  type = map
+  type = map(any)
 
   validation {
     condition     = max(var.ext_port["dev"]...) <= 65535 && min(var.ext_port["dev"]...) >= 1980
