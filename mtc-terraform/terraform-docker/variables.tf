@@ -13,7 +13,7 @@ variable "image" {
       prod = "nodered/node-red:latest-minimal"
     }
     influxdb = {
-      dev = "quay.io/influxdb/influxdb:v2.0.2"
+      dev  = "quay.io/influxdb/influxdb:v2.0.2"
       prod = "quay.io/influxdb/influxdb:v2.0.2"
     }
   }
