@@ -1,12 +1,10 @@
 # --- root/main.tf ---
-locals {
-  vpc_cidr = "10.123.0.0/16"
-}
 
 module "networking" {
   source           = "./networking"
   vpc_cidr         = local.vpc_cidr
   access_ip        = var.access_ip
+  security_groups  = local.security_groups
   public_sn_count  = 2
   private_sn_count = 3
   max_subnets      = 20
