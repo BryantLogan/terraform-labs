@@ -17,7 +17,7 @@ resource "aws_vpc" "mtc_vpc" {
 }
 
 resource "aws_subnet" "mtc_public_subnet" {
-  count                   = length(var.public_cidrs)
+  count                   = var.public_sn_count
   vpc_id                  = aws_vpc.mtc_vpc.id
   cidr_block              = var.public_cidrs[count.index]
   map_public_ip_on_launch = true
@@ -30,7 +30,7 @@ resource "aws_subnet" "mtc_public_subnet" {
 }
 
 resource "aws_subnet" "mtc_private_subnet" {
-  count      = length(var.private_cidrs)
+  count      = var.private_sn_count
   vpc_id     = aws_vpc.mtc_vpc.id
   cidr_block = var.private_cidrs[count.index]
   availability_zone = ["us-east-1a", "us-east-1b", "us-east-1c", "us-east-1d", "us-east-1e",
