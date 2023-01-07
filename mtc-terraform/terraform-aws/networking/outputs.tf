@@ -13,7 +13,7 @@ output "db_security_group" {
 }
 
 output "public_sg" {
-  value = [aws_security_group.mtc_sg["public"].id]
+  value = aws_security_group.mtc_sg["public"].id
 }
 
 output "public_subnets" {
