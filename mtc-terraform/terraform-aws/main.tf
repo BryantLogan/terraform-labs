@@ -12,3 +12,17 @@ module "networking" {
   private_cidrs    = [for i in range(1, 255, 2) : cidrsubnet(local.vpc_cidr, 8, i)]
   db_subnet_group  = true
 }
+
+module "database" {
+  source                = "./database"
+  db_storage            = 10
+  db_engine_version     = "5.7.22"
+  db_instance_class     = "db.t2.micro"
+  dbname                = "rancher"
+  dbuser                = "bobby"
+  dbpassword            = ""
+  db_subnet_group_name  = ""
+  db_security_group_ids = []
+  db_identifier         = "mtc-db"
+  skip_db_snapshot      = true
+}
