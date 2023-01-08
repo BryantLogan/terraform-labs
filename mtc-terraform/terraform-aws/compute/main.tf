@@ -10,9 +10,14 @@ data "aws_ami" "server_ami" {
   }
 }
 
-resource "resource random_id" "mtc_node_id" {
+resource "random_id" "mtc_node_id" {
   byte_length = 2
   count       = var.instance_count
+}
+
+resource "aws_key_pair" "mtc_auth" {
+  key_name   = var.key_name
+  public_key = file(var.public_key_path)
 }
 
 resource "aws_instance" "mtc_node" {
@@ -22,7 +27,7 @@ resource "aws_instance" "mtc_node" {
   tags = {
     Name = "mtc_node-${random_id.mtc_node_id[count.index].dec}"
   }
-  # key_name = ""
+  key_name               = aws_key_pair.mtc_auth.id
   vpc_security_group_ids = [var.public_sg]
   subnet_id              = var.public_subnets[count.index]
   # user_data = ""

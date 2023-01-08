@@ -41,3 +41,14 @@ module "loadbalancing" {
   listener_port          = 80
   listener_protocol      = "HTTP"
 }
+
+module "compute" {
+  source          = "./compute"
+  public_sg       = module.networking.public_sg
+  public_subnets  = module.networking.public_subnets
+  instance_count  = 1
+  instance_type   = "t3.micro"
+  vol_size        = 10
+  key_name        = "mtckey"
+  public_key_path = "C:/Users/bryan/.ssh/keymtc.pub"
+}
