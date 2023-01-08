@@ -5,6 +5,6 @@ output "load_balancer_endpoint" {
 }
 
 output "instances" {
-    value = {for i in module.compute.instance : i.tags.Name => i.public_ip}
+    value = { for i in module.compute.instance : i.tags.Name => "${i.public_ip}:${module.compute.instance_port}"}
     sensitive = true
 }
