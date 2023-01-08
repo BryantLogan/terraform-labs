@@ -38,4 +38,6 @@ module "loadbalancing" {
   lb_unhealthy_threshold = 2
   lb_timeout             = 3
   lb_interval            = 30
+  listener_port          = 80
+  listener_protocol      = "HTTP"
 }
