@@ -58,4 +58,5 @@ module "compute" {
   db_endpoint         = module.database.db_endpoint
   lb_target_group_arn = module.loadbalancing.lb_target_group_arn
   tg_port             = 8000
+  private_key_path    = "C:/Users/bryan/.ssh/keymtc"
 }
