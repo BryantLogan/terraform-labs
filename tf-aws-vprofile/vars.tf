@@ -35,15 +35,15 @@ variable "rmqpass" {
   type = string
 }
 
-variable "dbuser" {
+variable "db_user" {
   type = string
 }
 
-variable "dbpass" {
+variable "db_pass" {
   type = string
 }
 
-variable "dbname" {
+variable "db_name" {
   type = string
 }
 
